@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boneco de palito</title>
+    <script type="text/javascript">
+        var curScene;
+        var decision;
+        
+        function chooseScene() {
+            decision = prompt("Qual cena deseja entrar?", "Digite um número aqui:");
+            if (isNaN(decision) ) {
+                alert("Isto não é um número reconhecido! " + "Digite outro número");
+            }
+
+            else if (decision == 1) {
+                curScene = 2;
+                document.getElementById("scene").src = "scene" + curScene + ".png";
+                alert("Você chegou em uma linda casinha na floresta.");
+            }
+
+            
+        }
+    </script>
+</head>
+<body onload="chooseScene();">
+    <div style="text-align: center;">
+        <img id="scene" src="scene.png" alt="">
+        <video src=""></video>
+    </div>
+</body>
+</html>

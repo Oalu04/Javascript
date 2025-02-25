@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="cookie.js"></script>
+    <script type="text/javascript">
+
+        function greet_user(){
+            if (navigator.cookieEnabled){
+                userName = readCookie("irock_username"); 
+            }
+            if (userName)  {
+                alert("Olá " + userName + ", senti sua falta.");
+            }
+            else{
+                alert('Hello, eu sou a rocha de estimação');
+            }
+        }
+
+        function touchrock() {
+            if (userName) {
+                alert("Eu gosto de atenção, " + userName + ". Obrigada.");
+            }
+
+            else {
+
+                userName = prompt("Qual o seu nome?", "Enter your name here.");
+                alert("Prazer em conhecer você, " + userName + ".");
+                if (userName) {
+                    alert("Que bom conhecer você, " + userName + ".");
+                    if (navigator.cookieEnabled){
+                        writeCookie("irock_username", userName, 5 * 365);
+                    }
+                    else{
+                        alert("Sorry, Cookies arent supported/enabled in your brownser.")
+                    }
+                }
+            }
+            document.getElementById("rockImg").src = "rock_happy.png";
+            setTimeout("document.getElementById('rockImg').src = 'preda.png';", 30000);
+        }
+
+        function resizeRock() {
+            document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9;
+        }
+
+        
+        
+    </script>
+</head>
+
+<body onload="greet_user(); resizeRock();" onresize="resizeRock();">
+    <div style="margin-top: 100px; text-align: center;">
+        <img id="rockImg" src="preda.png" alt="iRock" style="cursor:pointer" onclick="touchrock();">
+    </div>
+</body>
+</html>

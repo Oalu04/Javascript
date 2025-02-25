@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Duncan's Just-in-Time Donuts</h1>
+    <h2>All donuts 50 cents each, cake or glazed!</h2>
+    <div id="iframe">
+        <form name="orderform" action="donuts.php" method="post">
+            Name:<input type="text" name="name" id="Name" >
+            <div class="field">
+            # of cake donuts:<input type="text" name="cakedonuts" id="cakedonuts" value="" onchange="pedido();">
+            </div>
+
+            <div class="field">
+            # of glazed donuts:<input type="text" name="glazeddonuts" id="glazeddonuts" value="" onchange="pedido();">    
+            </div>
+
+            <div class="field">
+            Minutes 'til pickup:<input type="text" name="minutes" id="minutes" value=""onchange="pedido();">
+            </div>
+
+            <div class="field">
+            Subtotal:<input type="text" name="subtotal" id="subtotal"> 
+            </div> 
+
+            <div class="field">
+            Tax:<input type="text" name="tax" id="tax">
+            </div>
+
+            <div class="field">
+            Total:<input type="text" name="total" id="total">
+            </div>
+            
+            <div class="field">
+            <input type="button" value="Place Order" onclick="placeOrder(this.form)">
+            </div>
+        </form>
+    </div>
+    <script src="JS/index.js"></script>
+</body>
+
+</html>
