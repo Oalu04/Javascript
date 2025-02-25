@@ -3,22 +3,27 @@ var seats = [[false, true, false, true, true, true, false, true, false],
             [true, true, true, true, true, true, false, true, false],
             [true, true, true, false, true, false, false, true, false]];
 var selSeat = -1;
+
+function setSeat(seatNum, status, description) {
+    document.getElementById("seat" + seatNum).src = "seat_" + status + ".png";
+    document.getElementById("seat" + seatNum).alt = description;
+}
+
 function initSeats() {
     for (var i = 0; i < seats.length; i++) {
         for (var j = 0; j < seats[i].length; j++) {
 
             if (seats[i][j]) {
-                document.getElementById("seat" + (i * seats[i].length + j)).src = "seat_avail.png";
-                document.getElementById("seat" + (i * seats[i].length + j)).alt = "Available seat";
+               setSeat(i * (seats[i].length + j, "dispon", "Poltrona disponivel"));
 
             }
             else {
-                document.getElementById("seat" + (i * seats[i].length + j)).src = "seat_unavail.png";
-                document.getElementById("seat" + (i * seats[i].length + j)).alt = "Unavailable seat";
+                setSeat(i * (seats[i].length) + j, "indisp", "Poltrona indisponivel" );
             }
         }
     }
 }
+
 
 
 function findSeats() {
@@ -34,12 +39,9 @@ function findSeats() {
         for (var j = 0; j < seats[i].length; j++) {
             if (seats[i][j] && seats[i][j + 1] && seats[i][j + 2]) {
                 selSeat = i * seats[i].length + j;
-                document.getElementById("seat" + (i * seats[i].length + j)).src = "seat_select.png";
-                document.getElementById("seat" + (i * seats[i].length + j)).alt = "Your seat";
-                document.getElementById("seat" + (i * seats[i].length + j + 1)).src = "seat_select.png";
-                document.getElementById("seat" + (i * seats[i].length + j + 1)).alt = "Your seat";
-                document.getElementById("seat" + (i * seats[i].length + j + 2)).src = "seat_select.png";
-                document.getElementById("seat" + (i * seats[i].length + j + 2)).alt = "Your seat";
+                setSeat(i * seats[i].length + j, "marque", "sua Poltrona");
+                setSeat(i * seats[i].length + j + 1, "marque", "sua Poltrona");
+                setSeat(i * seats[i].length + j + 2, "marque", "sua Poltrona");
 
                 var accept = confirm("As Poltronas de " + (j + 1) + " a " + (j + 3) + " na fileira " + (i + 1) + " estão disponiveis , aceita?");
 
@@ -49,12 +51,9 @@ function findSeats() {
                 }
                 else {
                     selSeat = -1;
-                    document.getElementById("seat" + (i * seats[i].length + j)).src = "seat_avail.png";
-                    document.getElementById("seat" + (i * seats[i].length + j)).alt = "Available";
-                    document.getElementById("seat" + (i * seats[i].length + j + 1)).src = "seat_avail.png";
-                    document.getElementById("seat" + (i * seats[i].length + j + 1)).alt = "Available seat";
-                    document.getElementById("seat" + (i * seats[i].length + j + 2)).src = "seat_avail.png";
-                    document.getElementById("seat" + (i * seats[i].length + j + 2)).alt = "Available seat";
+                    setSeat(i * seats[i] + j, "avail", "Poltrona disponivel");
+                    setSeat(i * seats[i] + j + 1, "dispon", "Poltrona disponivel");
+                    setSeat(i * seats[i] + j + 2, "dispon", "Poltrona disponivel");
                 }
             }
         }
